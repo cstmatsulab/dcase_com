@@ -1,0 +1,45 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+		<h3 ng-bind="resultMsg">{{lang.EditDetailTitle}}</h3>
+		<!--
+		//http://alex-d.github.io/Trumbowyg/#home
+		//https://www.froala.com/wysiwyg-editor/download
+		-->
+        <div trumbowyg-ng
+         ng-model="detail"
+         editor-config="editorConfig"></div>
+		
+		
+		<div>
+			<div class="col-xs-4">{{lang.SelectTemplateTitile}}</div>
+			<div class="col-xs-8">
+				<select class="form-control" ng-model="template"
+					ng-options="template.name for template in templateList[editParts.kind]"
+					ng-change="updateTemplate()">
+				</select>
+			</div>
+		</div>
+	<!--<div ng-show='editParts.kind != "Pendding"'>-->
+		<div>
+			<div class="col-xs-4">pending:</div>
+			<div class="col-xs-8">
+				<input type="checkbox" ng-model="editParts.penndingFlag"/>
+			</div>
+		</div>
+		<div>
+			<div class="col-xs-4">dcaseID:</div>
+			<div class="col-xs-8">{{dcaseID}}</div>
+			<div class="col-xs-4">PartsID:</div>
+			<div class="col-xs-8">{{editParts.id}}</div>
+		</div>
+	</div>
+	<button class="btn btn-primary" ng-click="ok()">{{lang.OK}}</button>
+	<button class="btn btn-danger" ng-click="cancel()">{{lang.Cancel}}</button>
+	</div>
+	<!--
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="ok()">OK</button>
+	</div>
+	-->
+</div>

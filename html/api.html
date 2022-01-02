@@ -1,0 +1,430 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>APIリファレンス</title>
+	<style>
+	table
+	{
+		border-collapse: collapse;
+		border-top: 1px solid #555;
+		border-left: 0px solid #555;
+	}
+	table th, table td
+	{
+        padding-left: 10px;
+        padding-right: 20px;
+		border-bottom: 1px solid #555;
+		border-right: 0px solid #555;
+	}
+	table th
+	{
+        padding-left: 10px;
+        padding-right: 20px;
+		background-color: #EEEEEE;
+		color: #000000;
+	}
+	</style>
+
+
+</head>
+<body>
+	<H1>APIリファレンス</H1>
+	<H2>動作テスト時は、Firefox推奨</H2>
+	<br/>	
+	<H3>ユーザー認証</H3>
+	<form action="./api/login.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/login.php</li>
+            <li>POST:mail=メールアドレス&passwd=パスワード</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                        <tr><td>authID</td><td>6時間有効の認証キー</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>mail:<input type="text" name="mail"/></li>
+            <li>パスワード:<input type="password" name="passwd"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+    <H3>DCaseの一覧</H3>
+	<form action="./api/getDCaseList.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/getDCaseList.php</li>
+            <li>POST:authID=認証キー</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                        <tr><td>dcaseList</td><td>dcaseの一覧</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+    <H3>新規DCaseの作成</H3>
+	<form action="./api/createDCase.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/createDCase.php</li>
+            <li>POST:authID=認証キー&title=タイトル</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                        <tr><td>dcaseID</td><td>作成されたdcaseID</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>title:<input type="text" name="title"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+    <H3>DCaseパーツのエクスポート</H3>
+	<form action="./api/exportDCase.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/exportDCase.php</li>
+            <li>POST:authID=認証キー&dcaseID=エクスポートするDCaseID</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                        <tr><td>partsList</td><td>パーツのリスト</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+	<br/>
+    <H3>DCaseパーツのインポート</H3>
+	<form action="./api/importDCase.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/importDCase.php</li>
+            <li>POST:authID=認証キー&dcaseID=インポートするDCaseID&partsList=partsListのJSON文字列</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>パーツの種類<br/>
+            	※最初が大文字、以降が小文字
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>パーツ名</th><th>APIでの表記</th></tr>
+                        <tr><td>ゴール</td><td>Goal</td></tr>
+                        <tr><td>戦略</td><td>Plan</td></tr>
+                        <tr><td>前提</td><td>Suppose</td></tr>
+                        <tr><td>証拠</td><td>Evidence</td></tr>
+                        <tr><td>モニタ</td><td>Monitor</td></tr>
+                        <tr><td>未到達</td><td>Unachieved</td></tr>
+                        <tr><td>外部</td><td>External</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li>partsList:<input type="text" name="partsList"/></li>
+            <li>書式は、エクスポートされたものと同様</li>
+            <li>partsIDで上書き保存</li>
+
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+
+    <H3>DCaseパーツの削除</H3>
+	<form action="./api/removeParts.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/removeParts.php</li>
+            <li>POST:authID=認証キー&dcaseID=対象のDCaseID&partsID=対象のPartsID</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li>partsID:<input type="text" name="partsID"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+
+    <H3>DCaseへファイルの登録</H3>
+	<form action="./api/uploadFile.php" method="POST" enctype="multipart/form-data">
+        <ul type="square">
+            <li>URL:./api/uploadFile.php</li>
+            <li>POST+multipart/form-data:authID=認証キー&dcaseID=対象のDCaseID&fileName=英数半角のファイルの表示名(記号NG)</li>
+            <li>fileというパラメーターでmultipart/form-dataでファイルを添付</li>
+            <li>ファイルの最大サイズは、2MBまで</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                        <tr><td>url</td><td>ファイルがアップロードされたURL</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li>fileName(英数半角):<input type="text" name="fileName"/></li>
+            <li>file:<input type="file" name="file"></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+
+    
+    <H3>DCaseにアップロードしたファイルの一覧</H3>
+	<form action="./api/listFile.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/listFile.php</li>
+            <li>POST:authID=認証キー&dcaseID=対象のDCaseID</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                        <tr><td>filenameList</td><td>ファイル名の一覧</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+
+    <H3>DCaseにアップロードしたファイルの削除</H3>
+	<form action="./api/removeFile.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/removeFile.php</li>
+            <li>POST:authID=認証キー&dcaseID=対象のDCaseID&fileName=削除対象のファイル名</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li>fileName:<input type="text" name="fileName"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+
+    <H3>DCaseの削除</H3>
+	<form action="./api/deleteDCase.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/deleteDCase.php</li>
+            <li>POST:authID=認証キー&dcaseID=削除するDCaseのDCaseID</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+
+
+
+    <H3>DCaseの画像化とSlackへの投稿</H3>
+	<form action="./api/takeDCaseImage.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/takeDCaseImage.php</li>
+            <li>POST:authID=認証キー&dcaseID=対象のDCaseID&slackOAuth=SlackAppのOAuthToken&slackChannel=チャネル名</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                        <tr><td>fileName</td><td>保存された画像のファイル名</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <!--
+            <li>slackURL:<input type="text" name="slackURL"/>[任意。無しの場合は、画像化まで実行]<br>
+                ・自分で作成したSlackアプリの管理画面から「Webhook URLs for Your Workspace」のうち、対象となるリンクを入力する
+            </li>
+            -->
+            <li>slackOAuth:<input type="text" name="slackOAuth"/>[任意。無しの場合は、画像化まで実行]<br>
+                ・自分で作成したSlackアプリの管理画面から「Webhook URLs for Your Workspace」のうち、対象となるリンクを入力する
+                ■必要なスコープ<br>
+                ・chat:write<br>
+                ・files:write<br>
+            </li>
+            <li>slackChannel:<input type="text" name="slackChannel"/>[任意。無しの場合は、画像化まで実行]<br>
+                ※「#なし」で入力
+            </li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+    
+
+    <H3>画像化されたDCaseの取得</H3>
+	<form action="./api/getDCaseImage.php" method="GET">
+        <ul type="square">
+            <li>URL:./api/getDCaseImage.php</li>
+            <li>GET:dcaseID=対象のDCaseID&fileName=表示したいファイル</li>
+            <li>戻り値:画像データ
+            </li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li>fileName:<input type="text" name="fileName"/></li>
+            <li><input type="submit" name="submit"/></li>
+        </ul>
+	</form>
+    <br/>
+
+    
+    <H3>画像化したDCase一覧の取得</H3>
+	<form action="./api/listDCaseImage.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/listDCaseImage.php</li>
+            <li>POST:authID=認証キー&dcaseID=対象のDCaseID</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                        <tr><td>filenameList</td><td>保存された画像のファイル名の一覧</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+
+    
+    <H3>DCaseCom内の画像化したDCaseの削除</H3>
+	<form action="./api/removeDCaseImage.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/removeDCaseImage.php</li>
+            <li>POST:authID=認証キー&dcaseID=対象のDCaseID&fileName=削除対象のファイル名</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li>fileName:<input type="text" name="fileName"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+
+
+    
+    <H3>[DCase Monitor API]　パーツ内に表示する表のデータの送信</H3>
+	<form action="./api/uploadTableValue.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/removeDCaseImage.php</li>
+            <li>POST:authID=認証キー&dcaseID=対象のDCaseID&partsID=パーツID&data=json形式のデータ</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li>partsID:<input type="text" name="partsID"/></li>
+            <li>data:<input type="text" name="data"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+
+    
+    <H3>[DCase Monitor API]　ノードの状態を正常状態と展開状態の切り替え</H3>
+	<form action="./api/uploadNodeState.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/removeDCaseImage.php</li>
+            <li>POST:authID=認証キー&dcaseID=対象のDCaseID&state=展開・非展開(True/False)&kind=置換するパーツの種類&detail=置換したパーツの内容に表示する文言</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                        <tr><td>newPartsID</td><td>置換されたパーツID</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li>state:<input type="text" name="state"/></li>
+            <li>kind:<input type="text" name="kind"/></li>
+            <li>detail:<input type="text" name="detail"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+    
+    <H3>[DCase Monitor API]　ノードの枠線の色の指定</H3>
+	<form action="./api/uploadBolderStyle.php" method="POST">
+        <ul type="square">
+            <li>URL:./api/removeDCaseImage.php</li>
+            <li>POST:authID=認証キー&dcaseID=対象のDCaseID&partsID=パーツID&color=カラーコード&thick=線の太さ</li>
+            <li>戻り値:JSONオブジェクト
+                <div style='margin:10px;'>
+                    <table>
+                        <tr><th>項目</th><th>説明</th></tr>
+                        <tr><td>result</td><td>OK/NG</td></tr>
+                    </table>
+                </div>
+            </li>
+            <li>authID:<input type="text" name="authID"/></li>
+            <li>dcaseID:<input type="text" name="dcaseID"/></li>
+            <li>partsID:<input type="text" name="partsID"/></li>
+            <li>color:<input type="text" name="data"/></li>
+            <li>thick:<input type="text" name="data"/></li>
+            <li><input type="submit" name="submit" value="送信" /></li>
+        </ul>
+	</form>
+    <br/>
+</body>
+</html>

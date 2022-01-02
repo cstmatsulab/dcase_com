@@ -1,0 +1,63 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+		<img ng-src="{{iconImagePath}}" style="height:100px; float : left;"></img>
+		<div style="float : left;">&nbsp; &nbsp; &nbsp; </div>
+		<h3 ng-bind="resultMsg" style="float : left;"></h3>
+	</div>
+	<div class="modal-body">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12" ng-show="etcInfo !== undefined">
+					<label class="col-sm-4 control-label">{{lang.MailAddress}}</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" ng-model="etcInfo.mail">
+                    </div>
+                    <label class="col-sm-4 control-label">{{lang.Password}}</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="password" ng-model="etcInfo.passwd">
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="password" ng-model="etcInfo.passwdAgain" placeholder="確認">
+                    </div>
+                    <label class="col-sm-4 control-label">{{lang.UserName}}</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text" ng-model="etcInfo.lastName" placeholder="苗字">
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text" ng-model="etcInfo.firstName" placeholder="名前">
+                    </div>
+                    <label class="col-sm-4 control-label">{{lang.Rubi}}</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text" ng-model="etcInfo.lastName" placeholder="ミョウジ">
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text" ng-model="etcInfo.firstName" placeholder="ナマエ">
+                    </div>
+                    <label class="col-sm-4 control-label">{{lang.Group}}</label>
+					<div class="col-sm-8">
+						<input class="form-control" type="text" ng-model="etcInfo.group" placeholder="スペース区切り">
+					</div>
+					<label class="col-sm-4 control-label">{{lang.Grade}}</label>
+					<div class="col-sm-8">
+						<input class="form-control" type="text" ng-model="etcInfo.grade">
+					</div>
+					<label class="col-sm-4 control-label">{{lang.Age}}</label>
+					<div class="col-sm-8">
+                        <input class="form-control" type="text" ng-model="etcInfo.age">
+					</div>
+                    <label class="col-sm-4 control-label">{{lang.Icon}}</label>
+                    <div class="col-sm-8">
+                        <input type="file" file-model="iconImage"/>
+                        <img ng-src="{{iconImageSrc}}" style="max-width:100%; max-height:300px;"/>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+        <label style="color:red;">{{AlertMessage}}</label>
+		<button class="btn btn-primary" ng-click="ok()">{{lang.UpdateUserInfo}}</button>
+        <button class="btn btn-danger" ng-click="cancel()">{{lang.Cancel}}</button>
+	</div>
+</div>

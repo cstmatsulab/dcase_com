@@ -1,0 +1,36 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+		<h3>{{lang.InviteUser}}</h3>
+		<!--
+		<h3 ng-bind="resultMsg"></h3>
+		-->
+	</div>
+	<div class="modal-body">
+		<div>
+			<label>{{lang.SearchUser}}</label>
+			<input class="form-control" type="text" ng-model="keyword" ng-keydown="searchKeydown($event)">
+			<button class="btn btn-primary" ng-click="searchUser()">{{lang.Search}}</button>
+		</div>
+		<div>　</div>
+		<label ng-if="searchResultList.length > 0">{{lang.SelectMember}}</label>
+		<div class="list-group"  style="overflow:auto;max-height:400px;">
+			<a class="list-group-item" ng-click="stateChange(user, $index);" ng-repeat="user in searchResultList">
+				<span class="glyphicon glyphicon-check" ng-show="user.addFlag"></span>
+				{{user.lastName}}　{{user.firstName}}
+			</a>
+		</div>
+		
+		<label ng-if="memberList.length > 0">{{lang.SelectedMember}}</label>
+		<div class="list-group"  style="overflow:auto;max-height:400px;">
+			<a class="list-group-item" ng-click="stateChange(user, $index);" ng-repeat="user in memberList">
+				<span class="glyphicon glyphicon-check" ng-show="user.addFlag"></span>
+				{{user.lastName}}　{{user.firstName}}
+			</a>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="ok()">{{lang.Invite}}</button>
+		<button class="btn btn-danger" ng-click="cancel()">{{lang.Cancel}}</button>
+	</div>
+</div>

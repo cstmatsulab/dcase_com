@@ -1,0 +1,16 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+		<h3>{{lang.EditLinkDCase}}</h3>
+	</div>
+	<div class="modal-body">
+		<div>
+			<label>{{lang.LinkURL}}</label>
+			<input class="form-control" type="text" ng-model="linkURL" placeholder="URL(https://***)">
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="ok()">{{lang.Update}}</button>
+		<button class="btn btn-danger" ng-click="cancel()">{{lang.Cancel}}</button>
+	</div>
+</div>

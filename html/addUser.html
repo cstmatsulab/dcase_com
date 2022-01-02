@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="jp" ng-app="App">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<title>D-Case Web Editor</title>
+		
+		<script src="./lib/js/jquery.min.js"></script>
+		<script src="./lib/js/angular/angular.js"></script>
+		<script src="./lib/js/angular/angular-ui-router.js"></script>
+		<script src="./lib/js/ui-bootstrap-tpls.min.js"></script>
+		<script src="./lib/js/bootstrap.min.js"></script>
+		<!--<script src="./lib/js/d3.js"></script>-->
+		<script src="./lib/js/d3.v4.js"></script>
+		<script src="./lib/js/clipboard.min.js"></script>
+		<script src="./lib/js/socket.io.js"></script>
+		
+		<!--
+		<script src="./lib/js/trumbowyg/dist/trumbowyg.min.js"></script>
+		-->
+		<script src="./lib/js/trumbowyg/dist/plugins/colors/trumbowyg.colors.js"></script>
+		<script src="./lib/js/trumbowyg/dist/trumbowyg.js"></script>
+		<script src="./lib/js/trumbowyg/dist/langs/ja.min.js"></script>
+		<script src="./lib/js/trumbowyg-ng/dist/trumbowyg-ng.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="./lib/js/trumbowyg/dist/ui/trumbowyg.min.css">
+		
+		<script>
+		$(function () {
+			var clipboard = new Clipboard('.btn');
+		});
+		</script>
+		<link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.min.css">
+		
+		<!--[if lt IE 9]>
+			<script src="/lib/html5shiv.js"></script>
+			<script src="/lib/respond.js"></script>
+		<![endif]-->
+		
+		<script src="./js/util.js"></script>
+		<script src="./js/addUser.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/index.css">
+	</head>
+	<body ng-controller="AddUser" ng-init="init();">
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-2 col-sm-8 col-xs-12" style="margin-top:15vh;">
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">{{lang.AddUserMenu}}</div>
+				<div class="panel-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-4 control-label">{{lang.MailAddress}}</label>
+							<div class="col-sm-8">
+								<input class="form-control" type="text" ng-model="mail">
+							</div>
+							<label class="col-sm-4 control-label"></label>
+							<div class="col-sm-8">
+								<input class="form-control" type="text" ng-model="mail_again" placeholder="{{lang.Confirm}}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">{{lang.Password}}</label>
+							<div class="col-sm-8">
+								<input class="form-control" type="password" name="password" ng-model="passwd">
+							</div>
+							<label class="col-sm-4 control-label"></label>
+							<div class="col-sm-8">
+								<input class="form-control" type="password" name="password" ng-model="passwd_again" placeholder="{{lang.Confirm}}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">{{lang.UserName}}</label>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" ng-model="lastName" placeholder="{{lang.LastName}}">
+							</div>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" ng-model="firstName" placeholder="{{lang.FirstName}}">
+							</div>
+						</div>
+						<div class="form-group"  ng-show="lang.Rubi != 'NotNeeded'">
+							<label class="col-sm-4 control-label">{{lang.Rubi}}</label>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" ng-model="lastNameRubi" placeholder="{{lang.LastNameRubi}}">
+							</div>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" ng-model="firstNameRubi" placeholder="{{lang.FirstNameRubi}}">
+							</div>
+						</div>
+						<!--
+						<div class="form-group">
+							<label class="col-sm-4 control-label">{{lang.Age}}</label>
+							<div class="col-sm-8">
+								<input class="form-control" type="text" ng-model="age">
+							</div>
+						</div>
+						-->
+						<div class="form-group">
+							<label class="col-sm-4 control-label">{{lang.Group}}</label>
+							<div class="col-sm-8">
+								<input class="form-control" type="text" ng-model="group" placeholder="{{lang.SepareteSpace}}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">{{lang.Grade}}</label>
+							<div class="col-sm-8">
+								<input class="form-control" type="text" ng-model="grade">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-4 control-label">{{lang.Icon}}</label>
+							<div class="col-sm-8">
+								<input type="file" file-model="iconImage"/>
+								<img ng-src="{{iconImageSrc}}" style="max-width:100%; max-height:400px;"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label"></label>
+							<div class="col-sm-8 text-center">
+								<button type="button" class="btn btn-primary btn-md" ng-click="addUser();">{{lang.Regist}}</button>
+								<label class="text-danger text-center">{{state}}</label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	</body>
+</html>

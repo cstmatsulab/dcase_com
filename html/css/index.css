@@ -1,0 +1,128 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    -ms-content-zooming: none;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: auto;
+}
+.svgStyle
+{
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-color: #DDDDDD;
+	width:100%;
+	height:100%;
+}
+
+@media (min-width: 768px)
+{
+	.svgSize
+	{
+		margin-right: 250px;
+	}
+}
+
+@media (min-width: 992px)
+{
+	.svgSize
+	{
+		margin-right: 300px;
+	}
+}
+
+@media (min-width: 1200px)
+{
+	.svgSize
+	{
+		margin-right: 500px;
+	}
+}
+
+@media (min-width: 1900px)
+{
+	.svgSize
+	{
+		margin-right: 1000px;
+	}
+}
+
+.hiddenMode
+{
+	height:0%;
+}
+
+.visibleMode
+{
+	height:90%;
+}
+
+.node
+{
+	cursor: pointer;
+}
+
+.Goal
+{
+	fill: #CCFFCC;
+	stroke: #0000FF;
+}
+.Plan
+{
+	fill: #FFFFFF;
+	stroke: #0000FF;
+}
+.Suppose
+{
+	fill: #FFFFFF;
+	stroke: #0000FF;
+}
+.Evidence
+{
+	fill: #FFC5AA;
+	stroke: #0000FF;
+}
+.Monitor
+{
+	fill: #FFFFFF;
+	stroke: #0000FF;
+}
+.Unachieved
+{
+	fill: #FFFFFF;
+	stroke: #0000FF;
+}
+.External
+{
+	fill: #FFFFFF;
+	stroke: #0000FF;
+}
+
+.link
+{
+	stroke: #0000FF;
+}
+
+.preHTML
+{
+	font-size: 16px;
+	background-color: rgba(255,255,255,0.0);
+	border: 0px solid rgba(0,0,0,0.0);
+	overflow: hidden;
+}
+
+
+.border_radius {
+	width: 40px;
+	height: 40px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+}

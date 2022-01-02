@@ -1,0 +1,115 @@
+{
+	"Login":"Login",
+	"SelectLang":"Language",
+
+	"Menu":"Menu",
+	"CreateNew":"New GSN",
+	"DCaseTitle":"Title",
+	"ScopeModeTitle":"Open Range",
+	"InviteUser":"Invite Other User",
+	"ScopeModeAllUser":"All Users",
+	"ScopeModeInvite":"Invited Users",
+	"ScopeModePublic":"Readable via URL",
+	"SearchUser":"User Search",
+	"SearchResultUser":"Search Result",
+	"SelectMember":"Selecting Members",
+	"SelectedMember":"Member Lists",
+	"CreateDCase":"Creating GSN",
+	"CreateDCaseToUser":"Inviting",
+
+	"Search":"Search",
+	"Update":"Update Title and Share",
+	"Invite":"Invite",
+	"OK":"OK",
+	"Cancel":"Cancel",
+	"Send":"Send",
+	"Regist":"Registration",
+
+	"OpenDCase":"Open GSN",
+	"DeleteDCase":"Delete GSN",
+	"Close":"Close",
+
+	"Agree":"Agree",
+	"DisAgree":"Disagree",
+
+	"RemoveAlert":"OK to Remove?",
+	
+	"GetDCase":"Get GSN JSON data",
+	"GetURL":"Get URL",
+	"BackNetwork":"Back to DCase List",
+	
+	"ViewScale":"View Scale",
+
+	"PartsMenu":"Node",
+	"PartsGoal":"Goal",
+	"PartsPlan":"Strategy",
+	"PartsSuppose":"Context",
+	"PartsEvidence":"Solution",
+	"PartsMonitor":"Monitor",
+	"PartsUnachieved":"Undeveloped",
+	"PartsExternal":"External",
+	"PartsAssumption":"Assumption",
+	"PartsJustification":"Justification",
+
+	"PartsDefaultMessage":"Double Click",
+
+	"EditMenu":"Edit",
+	"AddPath":"Add Path",
+	"AddPathClicked1":"Click Parent Parts",
+	"AddPathClicked2":"Click Child Parts",
+	"DelBtnMessage":"Delete",
+	"DelBtnClickedMessage":"Click Delete Item",
+
+	"InviteAlert":"Invited to New GSN",
+	"FromUser":"From",
+
+	"OpenChat":"Open Chat",
+
+	"AddUserMenu":"User Registration",
+	"MailAddress":"Mail Address",
+	"Password":"Password",
+	"UserName":"Name",
+	"Rubi":"NotNeeded",
+	"Group":"Organization",
+	"Grade":"Position",
+	"Age":"Age",
+	"Icon":"Icon Image",
+	"UpdateUserInfo":"Update Information",
+	"Confirm":"Confirm",
+	"LastName":"Last Name",
+	"FirstName":"First Name",
+	"LastNameRubi":"NotNeeded",
+	"FirstNameRubi":"NotNeeded",
+	"SepareteSpace":"Space Separate",
+
+	"EditLinkDCase":"Change Linking GSN",
+	"LinkDCaseID":"Linking URL",
+	"LinkDCaseIDMsg":"Link <br/> to Other GSN",
+	
+	"Copy":"Copy",
+	"Paste":"Paste",
+
+	"EditDetailTitle":"Contents",
+
+	"ErrorNoInputPassword":"No input Password",
+	
+	"ViewStakeHolder":"View StakeHolder",
+	
+	"GoalKindText":"Select Goal kind",
+	"EvidenceKindText":"Select Evidence kind",
+
+	"CurrentPassword": "Current Password [Required]",
+
+	"DeleteUser": "User Delete",
+	"DeleteUserAlert": "DCase with no other parties will be deleted",
+	
+	"CreateTemplate": "Create Template",
+	"TemplateName": "Label Name",
+	"TemplateDescription": "When you start creating the template, click the part that will be the starting point. The part containing the child nodes of the selected node is templated. If you want to cancel, open this dialog again to cancel.",
+	"TemplateCreateStart": "Template Create Start",
+	"TemplateCreateAlert": ", Can I make it?",
+	"TemplateDeployAlert": " Template, Is it okay to apply? After applying, even if you remove the label, the expanded template parts will not be deleted, so you need to delete them manually.",
+	"TemplateDeployLabel": "Applies only to labels",
+
+	"langEnd":""
+}

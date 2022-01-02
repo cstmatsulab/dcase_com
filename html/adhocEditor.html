@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="jp" ng-app="App">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<title>D-Case Web Editor</title>
+		
+		<script src="./lib/js/jquery.min.js"></script>
+		<script src="./lib/js/angular/angular.js"></script>
+		<script src="./lib/js/angular/angular-ui-router.js"></script>
+		<script src="./lib/js/ui-bootstrap-tpls.min.js"></script>
+		<script src="./lib/js/bootstrap.min.js"></script>
+		<!--<script src="./lib/js/d3.js"></script>-->
+		<script src="./lib/js/d3.v4.js"></script>
+		<script src="./lib/js/clipboard.min.js"></script>
+		<script src="./lib/js/socket.io.js"></script>
+		
+		<!--
+		<script src="./lib/js/trumbowyg/dist/trumbowyg.min.js"></script>
+		-->
+		<script src="./lib/js/trumbowyg/dist/plugins/colors/trumbowyg.colors.js"></script>
+		<script src="./lib/js/trumbowyg/dist/trumbowyg.js"></script>
+		<script src="./lib/js/trumbowyg/dist/langs/ja.min.js"></script>
+		<script src="./lib/js/trumbowyg-ng/dist/trumbowyg-ng.js"></script>
+		<link rel="stylesheet" type="text/css" href="./lib/js/trumbowyg/dist/ui/trumbowyg.min.css">
+		<script type="text/javascript" src="https://canvg.github.io/canvg/rgbcolor.js"></script> 
+        <script type="text/javascript" src="https://canvg.github.io/canvg/StackBlur.js"></script>
+        <script type="text/javascript" src="https://canvg.github.io/canvg/canvg.js"></script>
+
+		<script>
+		$(function () {
+			var clipboard = new Clipboard('.copy');
+		});
+		</script>
+		<link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.min.css">
+		
+		<!--[if lt IE 9]>
+			<script src="/lib/html5shiv.js"></script>
+			<script src="/lib/respond.js"></script>
+		<![endif]-->
+		
+		<script src="./js/util.js"></script>
+		<script src="./js/svgUtil.js"></script>
+		<script src="./js/dcase.js"></script>
+		<script src="./js/messaging.js"></script>
+		<script src="./js/adhocEditor.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/index.css">
+	</head>
+	<body ng-controller="Canvus" ng-init="init();">
+		<nav class="navbar navbar-default" style="margin-bottom:5px;">
+			<div class="navbar navbar-default navbar-fixed-top" role="navigation" id="menu">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="float: left; margin-left:10px;">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="./">
+								<span class="glyphicon glyphicon-home"></span>
+						</a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						&nbsp; 
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown">メニュー<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a ng-click="getImage();">画像としてダウンロード</a>
+										<a id="imageDownload" download="image.png" style="display:none;"></a>
+									</li>
+									<li>
+										<a class="copy" data-clipboard-text="{{url}}">他の人と共有(URLのコピー)</a>
+									</li>
+								</ul>
+							</li>
+						&nbsp; 
+						</ul>
+						<ul class="nav navbar-nav">
+						&nbsp; 
+							<li>
+								<label style="margin-left:20px;">表示倍率:{{viewPort.scale}}倍</label>
+								<button type="button" class="btn btn-primary navbar-btn" ng-click="btnScaleChange(-0.1)"><span class="glyphicon glyphicon-minus"></span></button>
+								<button type="button" class="btn btn-primary navbar-btn" ng-click="btnScaleChange(0.1)"><span class="glyphicon glyphicon-plus"></span></button>
+							</li>
+						&nbsp; 
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-push-2 col-sm-10 col-xs-12" id="canvus" style="height:80%; position:fixed;">
+					<div >
+						<div class="col-sm-9 col-xs-8 ">
+							<input class="form-control" type="text" ng-model="dcaseTitle" placeholder="タイトル" style="font-size:20px;">
+						</div>
+						<div class="col-sm-3 col-xs-3 ">
+							<button class="btn btn-primary" ng-click="updateTitle()">タイトルを更新</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-2 col-sm-pull-10  hidden-xs" style="height:100%; position:fixed;">
+					<div class="row" style="height:100%;">
+						<div class="panel panel-primary" style="height:26%; overflow: auto;">
+							<div class="panel-heading text-center">
+								編集
+							</div>
+							<table class="table">
+								<tbody>
+									<tr>
+										<td>
+											<div class="btn" style="width:100%;" ng-click="addPathBtn();" ng-class="{ 'btn-success': (addPathFlag >= 1) }">
+												{{AddPathMsg}}
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="btn" style="width:100%;" ng-click="delPathBtn();" ng-class="{ 'btn-danger': (delPathFlag >= 1) }">{{DelItemMsg}}</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="btn" style="width:100%;" ng-click="delPartsBtn();" ng-class="{ 'btn-danger': (delPartsFlag >= 1) }">{{DelPartsMsg}}</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- style="height:90%; overflow: auto;"> -->
+						<div class="panel panel-primary" style="height:50%; overflow: auto;">
+							<div class="panel-heading text-center">
+									部品
+							</div>
+							<table class="table">
+							<tbody>
+								<tr ng-repeat="(key, value) in partsKind">
+									<td>
+										<div class="btn" style="width:100%;" ng-click="addPartsBtn(key);" ng-class="{ 'btn-success': (addPartsKind == key) }">
+											<img ng-src="./icon/{{key}}.png" height="20" style="padding-right:10px;  float:left"></img>{{value.name}}</div>
+									</td>
+								</tr>
+							</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

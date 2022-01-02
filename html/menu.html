@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="jp" ng-app="App">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<title>D-Case Web Editor</title>
+		
+		<script src="./lib/js/jquery.min.js"></script>
+		<script src="./lib/js/angular/angular.js"></script>
+		<script src="./lib/js/angular/angular-ui-router.js"></script>
+		<script src="./lib/js/ui-bootstrap-tpls.min.js"></script>
+		<script src="./lib/js/bootstrap.min.js"></script>
+		<script src="./lib/js/d3.js"></script>
+		<link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.min.css">
+		
+		<!--[if lt IE 9]>
+			<script src="/lib/html5shiv.js"></script>
+			<script src="/lib/respond.js"></script>
+		<![endif]-->
+		
+		<script src="./js/util.js"></script>
+		<script src="./js/menu.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/index.css">
+	</head>
+	<body ng-controller="Menu" ng-init="init();">
+		<nav class="navbar navbar-default">
+		</nav>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-offset-3 col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading text-center"><H2>D-Case Web Editor</H2></div>
+						<div class="panel-body">
+							<a class="btn btn-block btn-primary" ng-click="createDCase()">新規作成{{lang.CreateNew}}</a>
+							<div ng-show='cookieID != ""'>
+								<div>　</div>
+								<div>　</div>
+								<a class="btn btn-block btn-warning" ng-click="editDCase()">作成中のD-Caseを開く</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,115 @@
+{
+	"Login":"ログイン",
+	"SelectLang":"言語選択",
+
+	"Menu":"メニュー",
+	"CreateNew":"新規の議論の作成",
+	"DCaseTitle":"タイトル",
+	"ScopeModeTitle":"公開範囲",
+	"InviteUser":"ユーザーを招待",
+	"ScopeModeAllUser":"すべてのユーザーに公開",
+	"ScopeModeInvite":"招待されたユーザーのみ",
+	"ScopeModePublic":"URLでアクセス可能",
+	"SearchUser":"ユーザーの検索",
+	"SearchResultUser":"検索結果",
+	"SelectMember":"議論に参加するメンバーを選択",
+	"SelectedMember":"参加するメンバーの一覧",
+	"CreateDCase":"D-Caseの作成",
+	"CreateDCaseToUser":"議論を申し込む",
+
+	"Search":"検索",
+	"Update":"タイトルと公開範囲の適用",
+	"Invite":"招待",
+	"OK":"OK",
+	"Cancel":"キャンセル",
+	"Send":"送信",
+	"Regist":"登録",
+
+	"OpenDCase":"D-Caseを開く",
+	"DeleteDCase":"D-Caseを削除",
+	"Close":"閉じる",
+
+	"Agree":"同意",
+	"DisAgree":"拒否",
+
+	"RemoveAlert":"を削除してよろしいですか?",
+	
+	"GetDCase":"DCaseのJSONデータを取得",
+	"GetURL":"他の人と共有(URLのコピー)",
+	"BackNetwork":"一覧へ戻る",
+	
+	"ViewScale":"表示倍率",
+
+	"PartsMenu":"部品",
+	"PartsGoal":"ゴール",
+	"PartsPlan":"戦略",
+	"PartsSuppose":"前提",
+	"PartsEvidence":"証拠",
+	"PartsMonitor":"モニタ",
+	"PartsUnachieved":"未到達",
+	"PartsExternal":"外部",
+	"PartsAssumption":"仮定",
+	"PartsJustification":"正当化",
+
+	
+	"PartsDefaultMessage":"ダブルクリックで\n内容の編集",
+
+	"EditMenu":"編集",
+	"AddPath":"パスの追加",
+	"AddPathClicked1":"親となる部品をクリック",
+	"AddPathClicked2":"子となる部品をクリック",
+	
+	"DelBtnMessage":"削除",
+	"DelBtnClickedMessage":"削除する対象をクリック",
+
+	"InviteAlert":"議論に招待されました",
+	"FromUser":"差出人",
+
+	"OpenChat":"チャットを展開",
+
+	"AddUserMenu":"ユーザー登録",
+	"MailAddress":"メールアドレス",
+	"Password":"パスワード",
+	"UserName":"氏名",
+	"Rubi":"フリガナ",
+	"Group":"所属",
+	"Grade":"役職",
+	"Age":"年齢",
+	"Icon":"アイコン画像",
+	"UpdateUserInfo":"ユーザー情報の更新",
+	"Confirm":"確認",
+	"LastName":"苗字",
+	"FirstName":"名前",
+	"LastNameRubi":"ミョウジ",
+	"FirstNameRubi":"ナマエ",
+	"SepareteSpace":"スペース区切り",
+
+	"EditLinkDCase":"リンクするDCaseの変更",
+	"LinkDCaseID":"リンクするURL",
+	"LinkDCaseIDMsg":"<br/>へのリンク",
+	
+	"Copy":"コピー",
+	"Paste":"ペースト",
+
+	"EditDetailTitle":"内容",
+	
+	"ErrorNoInputPassword":"パスワードを入力してください",
+	
+	"ViewStakeHolder":"関係者を表示",
+	
+	"SelectTemplateTitile":"テンプレートの選択",
+
+	"CurrentPassword": "現在のパスワード[必須]",
+
+	"DeleteUser": "ユーザーの削除",
+	"DeleteUserAlert": "他に関係者がいないDCaseは、削除されます",
+
+	"CreateTemplate": "テンプレートの作成",
+	"TemplateName": "ラベル名(半角英数推奨)",
+	"TemplateDescription": "テンプレート作成開始をしたら、起点となるパーツをクリックしてください。選択したノードの子ノード含む部分がテンプレート化されます。キャンセルする場合は、このダイアログをもう一度、開くことでキャンセルされます。",
+	"TemplateCreateStart": "テンプレート作成開始",
+	"TemplateCreateAlert": "でテンプレートを作成して良いですか?",
+	"TemplateDeployAlert": "のテンプレートを適用して良いですか?　適用後はラベルを解除しても展開されたテンプレートのパーツは削除されないので、手動で削除する必要があります",
+	"TemplateDeployLabel": "ラベルのみ適用",
+	"langEnd":""
+}

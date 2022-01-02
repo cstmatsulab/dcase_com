@@ -1,0 +1,23 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    -ms-content-zooming: none;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f2f2+25,adadad+89,8e8e8e+100 */
+background: #f2f2f2; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  #f2f2f2 25%, #adadad 89%, #8e8e8e 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover,  #f2f2f2 25%,#adadad 89%,#8e8e8e 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center,  #f2f2f2 25%,#adadad 89%,#8e8e8e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#8e8e8e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.svgStyle
+{
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-color: #DDDDDD;
+}

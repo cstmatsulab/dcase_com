@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="jp" ng-app="App">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<title>D-Case Web Editor</title>
+		
+		<script src="./lib/js/jquery.min.js"></script>
+		<script src="./lib/js/angular/angular.js"></script>
+		<script src="./lib/js/angular/angular-ui-router.js"></script>
+		<script src="./lib/js/ui-bootstrap-tpls.min.js"></script>
+		<script src="./lib/js/bootstrap.min.js"></script>
+		<!--<script src="./lib/js/d3.js"></script>-->
+		<script src="./lib/js/d3.v4.js"></script>
+		<script src="./lib/js/clipboard.min.js"></script>
+		<!--<script src="./lib/js/socket.io.js"></script>-->
+		<script src="/socket.io/socket.io.js"></script>
+		<!--
+		<script src="./lib/js/trumbowyg/dist/trumbowyg.min.js"></script>
+		-->
+		<script src="./lib/js/trumbowyg/dist/plugins/colors/trumbowyg.colors.js"></script>
+		<script src="./lib/js/trumbowyg/dist/trumbowyg.js"></script>
+		<script src="./lib/js/trumbowyg/dist/langs/ja.min.js"></script>
+		<script src="./lib/js/trumbowyg-ng/dist/trumbowyg-ng.js"></script>
+		<link rel="stylesheet" type="text/css" href="./lib/js/trumbowyg/dist/ui/trumbowyg.min.css">
+		
+		<script>
+		$(function () {
+			var clipboard = new Clipboard('.copy');
+		});
+		</script>
+		<link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.min.css">
+		
+		<!--[if lt IE 9]>
+			<script src="/lib/html5shiv.js"></script>
+			<script src="/lib/respond.js"></script>
+		<![endif]-->
+		
+		<script src="./js/util.js"></script>
+		<script src="./js/DCaseParts.js"></script>
+		<script src="./js/DCaseAPI.js"></script>
+		<script src="./js/DBApi.js"></script>
+		<script src="./js/RecvMessage.js"></script>
+		<script src="./js/SendMessage.js"></script>
+		<script src="./js/viewModule.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/index.css">
+	</head>
+	<body ng-controller="Canvus" ng-init="init();">
+		<nav class="navbar navbar-default" style="margin-bottom:5px;">
+			<div class="navbar navbar-default navbar-fixed-top" role="navigation" id="menu">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="float: left; margin-left:10px;">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<div class="navbar-brand" style="padding-top:5px;">
+							<div style="margin:10px; float:left;">{{userName}}</div>
+							<img class="border_radius" ng-src="./pic/user/{{userPic}}" style="float:left;"></img>
+						</div>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						&nbsp; 
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown">{{lang.Menu}}<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li ng-show="permission"><a ng-click="inviteUser();">{{lang.InviteUser}}</a></li>
+									<li>
+										<a ng-click="getDCaseData();">{{lang.GetDCase}}</a>
+										<a id="dcaseDownload" download="dcaseList.json" style="display:none;"></a>
+									</li>
+									<!--
+									<li><a ng-click="getImage();">画像としてダウンロード</a>
+										<a id="imageDownload" download="image.png" style="display:none;"></a>
+									</li>
+									-->
+									<li>
+										<a class="copy" data-clipboard-text="{{url}}">{{lang.GetURL}}</a>
+									</li>
+									<li>
+										<a href="./dcaseList.html">{{lang.BackNetwork}}</a>
+									</li>
+
+								</ul>
+							</li>
+						&nbsp; 
+						</ul>
+						<ul class="nav navbar-nav">
+						&nbsp; 
+							<li>
+								<label style="margin-left:20px;">{{lang.ViewScale}}:X{{viewPort.scale}}</label>
+								<button type="button" class="btn btn-primary navbar-btn" ng-click="btnScaleChange(-0.1)"><span class="glyphicon glyphicon-minus"></span></button>
+								<button type="button" class="btn btn-primary navbar-btn" ng-click="btnScaleChange(0.1)"><span class="glyphicon glyphicon-plus"></span></button>
+							</li>
+						&nbsp; 
+						</ul>
+						<ul class="nav navbar-nav navbar-right"  ng-show="permission">
+							<li>
+								<!--
+								<button class="btn btn-primary" ng-click="commitBtn()">Commit</button>
+								<button type="button" class="btn btn-success navbar-btn" ng-click="btnAgree(1)">
+									{{lang.Agree}}
+								</button>
+								<button type="button" class="btn btn-danger navbar-btn" ng-click="btnAgree(-1)">
+									{{lang.DisAgree}}
+								</button>
+								-->
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-xs-12" id="canvus" style="height:80%; position:fixed;">
+					<div >
+						<div class="col-sm-7 col-xs-6">
+							<input class="form-control" type="text" ng-model="dcaseTitle" placeholder="{{lang.DCaseTitle}}" style="font-size:20px;">
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

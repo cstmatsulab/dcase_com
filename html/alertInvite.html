@@ -1,0 +1,32 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+		<h3>{{lang.InviteAlert}}</h3>
+	</div>
+	<div class="modal-body">
+		<div class="container-fluid">
+			<div class="row">
+                <div class="col-sm-2">
+    				<label class="control-label">{{lang.DCaseTitle}}</label>
+                </div>
+                <div class="col-sm-10">
+    			    <label class="form-control">{{inviteDCase.title}}</label>
+                </div>
+                
+                <div class="col-sm-2">
+	    			<label class="control-label">{{lang.FromUser}}</label>
+                </div>
+                <div class="col-sm-10">
+                    <label class="form-control">{{inviteDCase.owner}}</label>
+                </div>
+
+                <div  class="col-sm-12 text-center">
+					<button class="btn btn-primary" ng-click="ok()">{{lang.OpenDCase}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-danger" ng-click="cancel()">{{lang.Close}}</button>
+	</div>
+</div>

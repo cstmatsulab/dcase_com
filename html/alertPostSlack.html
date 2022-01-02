@@ -1,0 +1,31 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+		<h3>Slackへ投稿</h3>
+	</div>
+	<div class="modal-body">
+		<div>
+			<!--
+			<label>Slack WebHook URL</label>
+			<input class="form-control" type="text" ng-model="slackURL" placeholder="https://hooks.slack.com/services/***">
+			※自分で作成したSlackアプリの管理画面から<br>「Webhook URLs for Your Workspace」のうち、対象となるリンクを入力する
+			<p>　　</p>
+			-->
+			<label>OAuth Token</label>
+			<input class="form-control" type="text" ng-model="slackOAuth" placeholder="xoxp-">
+			※「OAuth Tokens for Your Team」に記載されたスコープを入力<br>
+			■必要なスコープ<br>
+			・chat:write<br>
+			・files:write<br>
+			<p>　　</p>
+
+			<label>チャネル名(#なし)</label>
+			<input class="form-control" type="text" ng-model="slackChannel" placeholder="generalなど">
+			
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="ok()">{{lang.OK}}</button>
+		<button class="btn btn-danger" ng-click="cancel()">{{lang.Cancel}}</button>
+	</div>
+</div>
