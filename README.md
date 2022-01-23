@@ -5,7 +5,7 @@ By synchronizing the work contents between users in real time, it supports the d
 ### 1. Requirements
 * Ubuntu 20.04
 
-### 2. Requirements
+### 2. Setting
 `apt-get update`  
 `apt-get upgrade -y`  
 
