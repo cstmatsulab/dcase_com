@@ -1,5 +1,5 @@
 # docker build . -t dcase_com
-# docker run -it --rm -p 80:80 -v `pwd`/../dcase_com_data:/data dcase:least
+# docker run -it --rm -p 80:80 -v `pwd`/../dcase_com_data:/data dcase_com:least
 
 
 FROM ubuntu:20.04
@@ -10,7 +10,7 @@ RUN apt-get -y update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive \
   rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install -U pip setuptools & hash -r pip && \
-  pip3 install -U websocket-server mecab-python3
+  pip3 install -U websocket-server
 
 RUN mkdir -p /var/run/mongodb/
 
