@@ -37,7 +37,9 @@ Access to http://localhost/dcase/
 
 ## Building Docker Container
 `cd ./docker/`  
-`cp ../html ./`  
+`cp -rf ../html ./`  
 
 `docker build . -t dcase_com`  
-`docker run -it --rm -p 80:80 -v [host dir]:/data dcase_com:least`  
+`docker run -it --rm -p 80:80 -v [host dir]:/data dcase_com`  
+or  
+`docker run -d -p 80:80 -v [host dir]:/data dcase_com`  

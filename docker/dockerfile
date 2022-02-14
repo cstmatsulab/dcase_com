@@ -1,6 +1,6 @@
 # docker build . -t dcase_com
-# docker run -it --rm -p 80:80 -v `pwd`/../dcase_com_data:/data dcase_com:least
-
+# docker run -it --rm -p 80:80 -v `pwd`:/data dcase_com
+# docker run -d -p 80:80 -v `pwd`:/data dcase_com
 
 FROM ubuntu:20.04
 
@@ -17,7 +17,7 @@ RUN mkdir -p /var/run/mongodb/
 RUN rm /var/www/html/index.nginx-debian.html
 COPY ./index.html /var/www/html/index.html
 
-COPY ../html/ /var/www/html/dcase/
+COPY ./html/ /var/www/html/dcase/
     
 ADD ./mecab.ini /etc/php/7.4/mods-available/mecab.ini
 ADD ./mecab.ini /etc/php/7.4/cli/conf.d/20-mecab.ini
