@@ -6,6 +6,7 @@ upstream python
 
 server {
    listen 80;
+   client_max_body_size 20m;
    server_name _;
 
    root   /var/www/html/;

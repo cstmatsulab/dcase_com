@@ -5,7 +5,7 @@
 FROM ubuntu:20.04
 
 RUN apt-get -y update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive \
-  apt-get install -y nginx php-fpm composer postfix php-dev php-pear python3 python3-pip python3-dev mongodb php-mongodb supervisor git php-mbstring \
+  apt-get install -y nginx php-fpm composer postfix php-dev php-pear python3 python3-pip python3-dev mongodb php-mongodb supervisor git php-mbstring php-imagick \
                      mecab libmecab-dev mecab-ipadic-utf8 && \
   rm -rf /var/lib/apt/lists/*
 
@@ -22,6 +22,9 @@ COPY ./html/ /var/www/html/dcase/
 ADD ./mecab.ini /etc/php/7.4/mods-available/mecab.ini
 ADD ./mecab.ini /etc/php/7.4/cli/conf.d/20-mecab.ini
 ADD ./mecab.ini /etc/php/7.4/fpm/conf.d/20-mecab.ini
+
+RUN sed -ri 's/#*upload_max_filesize.*/upload_max_filesize = 20M/g' /etc/php/7.4/fpm/php.ini && \
+    sed -ri 's/#*post_max_size.*/post_max_size = 20M/g' /etc/php/7.4/fpm/php.ini
 
 ADD ./mongodb.conf /etc/mongodb.conf
 ADD ./nginx.default /etc/nginx/sites-enabled/default
