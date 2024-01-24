@@ -15,23 +15,23 @@ RUN pip3 install -U pip setuptools & hash -r pip && \
 RUN mkdir -p /var/run/mongodb/
 
 RUN rm /var/www/html/index.nginx-debian.html
-COPY ./index.html /var/www/html/index.html
+COPY ./docker/index.html /var/www/html/index.html
 
-COPY ./html/ /var/www/html/dcase/
+COPY ./docker/html/ /var/www/html/dcase/
     
-ADD ./mecab.ini /etc/php/7.4/mods-available/mecab.ini
-ADD ./mecab.ini /etc/php/7.4/cli/conf.d/20-mecab.ini
-ADD ./mecab.ini /etc/php/7.4/fpm/conf.d/20-mecab.ini
+ADD ./docker/mecab.ini /etc/php/7.4/mods-available/mecab.ini
+ADD ./docker/mecab.ini /etc/php/7.4/cli/conf.d/20-mecab.ini
+ADD ./docker/mecab.ini /etc/php/7.4/fpm/conf.d/20-mecab.ini
 
 RUN sed -ri 's/#*upload_max_filesize.*/upload_max_filesize = 20M/g' /etc/php/7.4/fpm/php.ini && \
     sed -ri 's/#*post_max_size.*/post_max_size = 20M/g' /etc/php/7.4/fpm/php.ini
 
-ADD ./mongodb.conf /etc/mongodb.conf
-ADD ./nginx.default /etc/nginx/sites-enabled/default
+ADD ./docker/mongodb.conf /etc/mongodb.conf
+ADD ./docker/nginx.default /etc/nginx/sites-enabled/default
 
-ADD ./supervisor-mongo.conf /etc/supervisor/conf.d/mongo.conf
-ADD ./supervisor-dcase.conf /etc/supervisor/conf.d/dcase.conf
+ADD ./docker/supervisor-mongo.conf /etc/supervisor/conf.d/mongo.conf
+ADD ./docker/supervisor-dcase.conf /etc/supervisor/conf.d/dcase.conf
 
-ADD ./init.sh /init.sh
+ADD ./docker/init.sh /init.sh
 
 CMD ["/bin/bash", "/init.sh"]

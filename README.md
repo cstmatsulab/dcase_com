@@ -36,9 +36,6 @@ By synchronizing the work contents between users in real time, it supports the d
 Access to http://localhost/dcase/
 
 ## Building Docker Container
-`cd ./docker/`  
-`cp -rf ../html ./`  
-
 `docker build . -t dcase_com`  
 `docker run -it --rm -p 80:80 -v [host dir]:/data dcase_com`  
 or  
