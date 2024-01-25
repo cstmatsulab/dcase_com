@@ -1,0 +1,19 @@
+# Start Dcase Communicator
+# sudo docker-compose up -d
+# 
+# Stop Dcase Communicator
+# docker-compose down
+
+version: '3'
+
+services:
+  dcase_com:
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes:
+      # Example for Mac. 
+      # Please rewrite the “~/Documents/dcase_com” part according to your environment.
+      - ~/Documents/dcase_com:/data
+    ports:
+      - "80:80"

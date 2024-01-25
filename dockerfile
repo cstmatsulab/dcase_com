@@ -17,7 +17,7 @@ RUN mkdir -p /var/run/mongodb/
 RUN rm /var/www/html/index.nginx-debian.html
 COPY ./docker/index.html /var/www/html/index.html
 
-COPY ./docker/html/ /var/www/html/dcase/
+COPY ./html/ /var/www/html/dcase/
     
 ADD ./docker/mecab.ini /etc/php/7.4/mods-available/mecab.ini
 ADD ./docker/mecab.ini /etc/php/7.4/cli/conf.d/20-mecab.ini

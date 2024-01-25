@@ -36,7 +36,19 @@ By synchronizing the work contents between users in real time, it supports the d
 Access to http://localhost/dcase/
 
 ## Building Docker Container
+`cd dcase_com`  
 `docker build . -t dcase_com`  
 `docker run -it --rm -p 80:80 -v [host dir]:/data dcase_com`  
 or  
 `docker run -d -p 80:80 -v [host dir]:/data dcase_com`  
+
+## Building with docker-compose
+The attached docker-compose.yml is an example for Mac.  
+Please rewrite the “~/Documents/dcase_com” part according to your environment.  
+
+`cd dcase_com`  
+- Start Dcase Communicator  
+`sudo docker-compose up -d`  
+  
+- Stop Dcase Communicator  
+`docker-compose down`  
